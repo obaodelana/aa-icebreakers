@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Emoji Algorithm | Adullam Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy-950: #050d1a;
+            --color-navy-900: #0a1628;
+            --color-gold-500: #d4a853;
+            --color-gold-400: #e5bc6a;
+            --color-cream: #faf8f5;
+            --color-electric-500: #3b82f6;
+            --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background-color: var(--color-navy-950);
+            color: var(--color-cream);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+            padding: 3rem;
+            border: 2px solid var(--color-gold-500);
+            border-radius: 32px;
+            background-color: var(--color-navy-900);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-navy-900);
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            color: var(--color-gold-500);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--color-electric-500);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hint-tag {
+            display: inline-block;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--color-electric-500);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .emoji-display {
+            font-size: 6rem;
+            margin: 1rem 0;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .answer-box {
+            height: 100px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .answer {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--color-gold-400);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .answer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-gold-500);
+            color: var(--color-navy-950);
+            box-shadow: 0 4px 14px rgba(212, 168, 83, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-gold-400);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 168, 83, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--color-gold-500);
+            color: var(--color-gold-500);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(212, 168, 83, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .progress {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-gold-500);
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        /* Completion Screen */
+        #game-screen { display: flex; flex-direction: column; align-items: center; }
+        #completion-screen { display: none; flex-direction: column; align-items: center; animation: slideUp 0.8s ease-out; }
+
+        .celebration-emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="https://adullamacademy.com/logos/logo.png" alt="Adullam Academy">
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen">
+            <h1>Emoji Algorithm</h1>
+            <div class="subtitle">DECRYPT THE PUZZLE</div>
+            <div class="hint-tag" id="hint-tag">STORY</div>
+
+            <div class="emoji-display" id="emoji-display">...</div>
+
+            <div class="answer-box">
+                <div class="answer" id="answer-text">...</div>
+            </div>
+
+            <div class="controls">
+                <button class="btn-secondary" onclick="prevSlide()" id="back-btn">BACK</button>
+                <button class="btn-primary" onclick="toggleAnswer()" id="toggle-btn">REVEAL ANSWER</button>
+                <button class="btn-secondary" onclick="nextSlide()" id="next-btn">NEXT</button>
+            </div>
+
+            <div class="progress" id="progress">Question 1 of 10</div>
+        </div>
+
+        <!-- Completion Screen -->
+        <div id="completion-screen">
+            <div class="celebration-emoji">🏆✨🥳</div>
+            <h1>Algorithm Compiled!</h1>
+            <div class="subtitle" style="margin-bottom: 2rem;">Excellent work, Kingdom Visionary!</div>
+            <button class="btn-primary" onclick="restartGame()">RESTART SYSTEM</button>
+        </div>
+    </div>
+
+    <script>
+        const allQuestions = [
+            { "emojis": "🌈🚢🦒🦒", "answer": "Noah's Ark", "hint": "Story" },
+            { "emojis": "🍎🐍🌳👫", "answer": "Adam and Eve", "hint": "Story" },
+            { "emojis": "🧒🏾🪨🎯⚔️", "answer": "David and Goliath", "hint": "Story" },
+            { "emojis": "👶🏾🧺🌊👸🏾", "answer": "Baby Moses in the Nile", "hint": "Story" },
+            { "emojis": "🧥🌈👨‍👦🌟", "answer": "Joseph's Coat of Colors", "hint": "Story" },
+            { "emojis": "🦁🙏🏰👑", "answer": "Daniel in the Lions' Den", "hint": "Story" },
+            { "emojis": "🐋🌊🤢🙏", "answer": "Jonah and the Whale", "hint": "Story" },
+            { "emojis": "👶🏾🌟🐂🐪🤴", "answer": "The Birth of Jesus", "hint": "Event" },
+            { "emojis": "🚶‍♂️🌊🙌🛶", "answer": "Jesus Walks on Water", "hint": "Event" },
+            { "emojis": "🍞🍞🐟🐟🧺", "answer": "Feeding of the 5,000", "hint": "Event" },
+            { "emojis": "🏺🏺💧🍷🙌", "answer": "The Miracle at Cana", "hint": "Event" },
+            { "emojis": "🎺🎺🧱💥🏰", "answer": "The Walls of Jericho", "hint": "Event" },
+            { "emojis": "👸🏾👑🙏👑", "answer": "Queen Esther", "hint": "Character" },
+            { "emojis": "🔨🧱🏗️🛡️⚔️", "answer": "Nehemiah's Wall", "hint": "Event" },
+            { "emojis": "🏃🏾‍♂️💰🐷🏠👨‍👦", "answer": "The Prodigal Son", "hint": "Story" },
+            { "emojis": "🪜😇☁️😴🪨", "answer": "Jacob's Ladder", "hint": "Event" },
+            { "emojis": "🐑🧔🏾‍♂️🐑🌿💧", "answer": "The Good Shepherd", "hint": "Character" },
+            { "emojis": "✝️🌅🙌🪨🕳️", "answer": "The Resurrection", "hint": "Event" },
+            { "emojis": "🛶🌊💨🤫😴", "answer": "Jesus Calms the Storm", "hint": "Event" },
+            { "emojis": "🌊✋🛤️🏃🏾‍♂️🔥", "answer": "Parting of the Red Sea", "hint": "Event" }
+        ];
+
+        let slides = [];
+        let currentSlide = 0;
+        let isAnswerVisible = false;
+
+        const gameScreen = document.getElementById('game-screen');
+        const completionScreen = document.getElementById('completion-screen');
+        const emojiDisplay = document.getElementById('emoji-display');
+        const answerText = document.getElementById('answer-text');
+        const hintTag = document.getElementById('hint-tag');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const progress = document.getElementById('progress');
+        const nextBtn = document.getElementById('next-btn');
+
+        function initGame() {
+            slides = allQuestions
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 10);
+            currentSlide = 0;
+            updateSlide();
+            gameScreen.style.display = 'flex';
+            completionScreen.style.display = 'none';
+        }
+
+        function updateSlide() {
+            const slide = slides[currentSlide];
+            
+            answerText.style.transition = 'none';
+            answerText.classList.remove('visible');
+            
+            emojiDisplay.textContent = slide.emojis;
+            answerText.textContent = slide.answer;
+            hintTag.textContent = slide.hint;
+            
+            toggleBtn.textContent = "REVEAL ANSWER";
+            isAnswerVisible = false;
+            progress.textContent = `Question ${currentSlide + 1} of 10`;
+            
+            // Change "NEXT" to "FINISH" on last slide
+            if (currentSlide === slides.length - 1) {
+                nextBtn.textContent = "FINISH";
+            } else {
+                nextBtn.textContent = "NEXT";
+            }
+
+            answerText.offsetHeight;
+            answerText.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            
+            emojiDisplay.style.animation = 'none';
+            emojiDisplay.offsetHeight; 
+            emojiDisplay.style.animation = 'slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+        }
+
+        function toggleAnswer() {
+            isAnswerVisible = !isAnswerVisible;
+            if (isAnswerVisible) {
+                answerText.classList.add('visible');
+                toggleBtn.textContent = "HIDE ANSWER";
+            } else {
+                answerText.classList.remove('visible');
+                toggleBtn.textContent = "REVEAL ANSWER";
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide === slides.length - 1) {
+                showCompletion();
+            } else {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function showCompletion() {
+            gameScreen.style.display = 'none';
+            completionScreen.style.display = 'flex';
+        }
+
+        function restartGame() {
+            initGame();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (completionScreen.style.display === 'flex') {
+                if (e.code === 'Enter' || e.code === 'Space') restartGame();
+                return;
+            }
+
+            if (e.code === 'Space') {
+                e.preventDefault();
+                toggleAnswer();
+            }
+            if (e.code === 'ArrowRight') nextSlide();
+            if (e.code === 'ArrowLeft') prevSlide();
+        });
+
+        // Start
+        initGame();
+    </script>
+</body>
+</html>

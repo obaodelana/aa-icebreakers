@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Breakers | Adullam Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy-950: #050d1a;
+            --color-navy-900: #0a1628;
+            --color-gold-500: #d4a853;
+            --color-cream: #faf8f5;
+            --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background-color: var(--color-navy-950);
+            color: var(--color-cream);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+            padding: 3rem;
+            border: 2px solid var(--color-gold-500);
+            border-radius: 32px;
+            background-color: var(--color-navy-900);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+        h1 {
+            font-family: var(--font-heading);
+            color: var(--color-gold-500);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        .game-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 168, 83, 0.2);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .game-card:hover {
+            border-color: var(--color-gold-500);
+            background: rgba(212, 168, 83, 0.05);
+            transform: translateY(-5px);
+        }
+        .game-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-gold-500);
+            margin-bottom: 0.5rem;
+        }
+        .game-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ice Breaker Games</h1>
+        <div class="game-grid">
+            <a href="emoji-algorithm.html" class="game-card">
+                <div class="game-title">Emoji Algorithm</div>
+                <div class="game-desc">Decrypt Bible stories, characters, and events from emoji strings.</div>
+            </a>
+            <!-- Placeholder for future games -->
+            <div class="game-card" style="opacity: 0.5; border-style: dashed; cursor: default;">
+                <div class="game-title">More Coming Soon...</div>
+                <div class="game-desc">Expanding the Kingdom Invention Lab and more.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
