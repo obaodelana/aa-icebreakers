@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Emoji Algorithm | Adullam Academy</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+    <div class="container">
+        <a href="../../index.html" class="back-home">← Home</a>
+        <div class="logo">
+            <img src="https://adullamacademy.com/logos/logo.png" alt="Adullam Academy">
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen">
+            <h1>Emoji Algorithm</h1>
+            <div class="subtitle">DECRYPT THE PUZZLE</div>
+            <div class="hint-tag" id="hint-tag">STORY</div>
+
+            <div class="emoji-display" id="emoji-display">...</div>
+
+            <div class="answer-box">
+                <div class="answer" id="answer-text">...</div>
+            </div>
+
+            <div class="controls">
+                <button class="btn-secondary" onclick="prevSlide()" id="back-btn">BACK</button>
+                <button class="btn-primary" onclick="toggleAnswer()" id="toggle-btn">REVEAL ANSWER</button>
+                <button class="btn-secondary" onclick="nextSlide()" id="next-btn">NEXT</button>
+            </div>
+
+            <div class="progress" id="progress">Question 1 of 10</div>
+        </div>
+
+        <!-- Completion Screen -->
+        <div id="completion-screen">
+            <div class="celebration-emoji">🏆✨🥳</div>
+            <h1>Algorithm Compiled!</h1>
+            <div class="subtitle" style="margin-bottom: 2rem;">Excellent work, Kingdom Visionary!</div>
+            <button class="btn-primary" onclick="restartGame()">RESTART SYSTEM</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

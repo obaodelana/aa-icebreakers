@@ -7,91 +7,21 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css">
     <style>
-        :root {
-            --color-navy-950: #050d1a;
-            --color-navy-900: #0a1628;
-            --color-gold-500: #d4a853;
-            --color-gold-400: #e5bc6a;
-            --color-cream: #faf8f5;
-            --color-electric-500: #3b82f6;
-            --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
-            --font-body: 'Inter', system-ui, sans-serif;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-body);
-            background-color: var(--color-navy-950);
-            color: var(--color-cream);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 800px;
-            width: 90%;
-            padding: 3rem;
-            border: 2px solid var(--color-gold-500);
-            border-radius: 32px;
-            background-color: var(--color-navy-900);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            position: relative;
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .logo {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-navy-900);
-            padding: 0 20px;
-        }
-
-        .logo img {
-            height: 60px;
-        }
-
-        h1 {
-            font-family: var(--font-heading);
-            color: var(--color-gold-500);
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: var(--color-electric-500);
-            margin-bottom: 2rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         .game-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 1rem;
             width: 100%;
         }
 
         .game-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 16px;
+            background: var(--color-cream);
+            padding: 2rem;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(212, 168, 83, 0.2);
             text-decoration: none;
             color: inherit;
@@ -103,36 +33,39 @@
 
         .game-card:hover {
             border-color: var(--color-gold-500);
-            background: rgba(212, 168, 83, 0.1);
+            background: white;
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-soft);
         }
 
         .game-title {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--color-gold-500);
+            font-size: 1.2rem;
+            color: var(--color-navy-900);
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .game-desc {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.4;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            line-height: 1.5;
+            color: var(--color-navy-800);
         }
 
         .placeholder-card {
-            opacity: 0.4;
+            opacity: 0.5;
             border-style: dashed;
             cursor: default;
         }
 
         .placeholder-card:hover {
             transform: none;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--color-cream);
             border-color: rgba(212, 168, 83, 0.2);
+            box-shadow: none;
         }
     </style>
 </head>
@@ -145,7 +78,7 @@
         <div class="subtitle">SELECT A MISSION</div>
         
         <div class="game-grid">
-            <a href="emoji-algorithm.html" class="game-card">
+            <a href="games/emoji-algorithm/index.html" class="game-card">
                 <div class="game-title">Emoji Algorithm</div>
                 <div class="game-desc">Decrypt Bible stories, characters, and events from emoji strings.</div>
             </a>
