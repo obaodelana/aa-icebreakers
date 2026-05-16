@@ -5,8 +5,8 @@ const allQuestions = [
         "answer": 0
     },
     {
-        "question": "In the AI Studio, what does the 'System Instruction' box control?",
-        "options": ["The AI's memory", "The AI's personality and behavior", "The AI's internet connection", "The AI's download speed"],
+        "question": "In the AI Studio, what does the System Instruction box control?",
+        "options": ["The AI memory", "The AI personality and behavior", "The AI internet connection", "The AI download speed"],
         "answer": 1
     },
     {
@@ -15,22 +15,22 @@ const allQuestions = [
         "answer": 2
     },
     {
-        "question": "In the Rapper.ai project, what does the 'ollama' package do?",
+        "question": "In the Rapper.ai project, what does the ollama package do?",
         "options": ["Draws images on screen", "Connects your code to a local AI model", "Manages your virtual environment", "Creates the project folder"],
         "answer": 1
     },
     {
-        "question": "In our Space Shooter game, which library do we import as 'pyray'?",
+        "question": "In our Space Shooter game, which library do we import as pyray?",
         "options": ["Python Ray", "Raylib", "PyRaylib", "RayGame"],
         "answer": 1
     },
     {
-        "question": "What does pyray.init_window(800, 450, 'Space Shooter') do?",
+        "question": "What does pyray.init_window(800, 450, Space Shooter) do?",
         "options": ["Creates a text file", "Opens a game window that is 800px wide and 450px tall", "Draws a rectangle on screen", "Saves the game progress"],
         "answer": 1
     },
     {
-        "question": "In our Space Shooter, what is 'Delta Time' (dt) used for?",
+        "question": "In our Space Shooter, what is Delta Time (dt) used for?",
         "options": ["To create a delay in the game", "To ensure movement speed stays consistent regardless of frame rate", "To change the background color", "To count the number of bullets"],
         "answer": 1
     },
@@ -45,17 +45,17 @@ const allQuestions = [
         "answer": 1
     },
     {
-        "question": "How do you store a bullet's position in the Space Shooter?",
+        "question": "How do you store a bullet position in the Space Shooter?",
         "options": ["As a string", "Using pyray.Vector2 to store both X and Y coordinates", "In a dictionary", "As two separate lists"],
         "answer": 1
     },
     {
-        "question": "In Raylib, to make a bullet move 'up' on the screen, what do you do to its Y value?",
+        "question": "In Raylib, to make a bullet move up on the screen, what do you do to its Y value?",
         "options": ["Increase it", "Decrease it", "Multiply it by 2", "Set it to 0"],
         "answer": 1
     },
     {
-        "question": "In Joseph's Grain Storehouse, what kind of loop do you use to run code a specific number of times?",
+        "question": "In Josephs Grain Storehouse, what kind of loop do you use to run code a specific number of times?",
         "options": ["while loop", "for loop", "if statement", "function call"],
         "answer": 1
     },
@@ -76,12 +76,12 @@ const allQuestions = [
     },
     {
         "question": "What is an API key in the context of Google AI?",
-        "options": ["A key on your keyboard", "A secret password that lets your code access Google's AI", "A type of computer virus", "A programming language"],
+        "options": ["A key on your keyboard", "A secret password that lets your code access Google AI", "A type of computer virus", "A programming language"],
         "answer": 1
     },
     {
         "question": "Why should you never share your API key?",
-        "options": ["It's too long to remember", "Someone could use it to make requests on your account", "It changes every hour", "It's only valid for one day"],
+        "options": ["It is too long to remember", "Someone could use it to make requests on your account", "It changes every hour", "It is only valid for one day"],
         "answer": 1
     },
     {
@@ -90,12 +90,12 @@ const allQuestions = [
         "answer": 1
     },
     {
-        "question": "When using triple quotes (''') in Python for system instructions, what are they used for?",
+        "question": "When using triple quotes (\"\"\") in Python for system instructions, what are they used for?",
         "options": ["Creating single-line comments", "Writing multi-line strings", "Creating a new variable type", "Running a loop"],
         "answer": 1
     },
     {
-        "question": "In the Values vs Variables lesson, what type of error occurs when you try to add a string to a number (e.g., '5' + 3)?",
+        "question": "In the Values vs Variables lesson, what type of error occurs when you try to add a string to a number (e.g. \"5\" + 3)?",
         "options": ["No error occurs", "A TypeError", "A SyntaxError", "A ValueError"],
         "answer": 1
     },
@@ -111,7 +111,7 @@ const allQuestions = [
     },
     {
         "question": "What does pyray.begin_drawing() tell the computer?",
-        "options": ["The game is over", "We're about to start painting the next frame on the screen", "The window is closing", "The player scored a point"],
+        "options": ["The game is over", "We are about to start painting the next frame on the screen", "The window is closing", "The player scored a point"],
         "answer": 1
     },
     {
