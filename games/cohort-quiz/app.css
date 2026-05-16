@@ -1,0 +1,137 @@
+/* Cohort Quiz - Game Styles */
+
+.back-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--color-gold-600);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.back-home:hover {
+    opacity: 1;
+}
+
+.question-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    color: var(--color-navy-900);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    animation: slideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    border: 2px solid rgba(10, 22, 40, 0.15);
+    background: white;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-navy-900);
+    text-align: left;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: var(--color-gold-500);
+    background: rgba(212, 168, 83, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.option-btn.correct {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    color: #166534;
+}
+
+.option-btn.incorrect {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    color: #991b1b;
+}
+
+.score-display {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-gold-600);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.progress {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-navy-900);
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+/* Completion Screen */
+#game-screen { display: flex; flex-direction: column; align-items: center; width: 100%; }
+#completion-screen { display: none; flex-direction: column; align-items: center; width: 100%; }
+
+.celebration-emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.final-score-label {
+    font-size: 1rem;
+    color: var(--color-navy-900);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.final-score-value {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--color-gold-600);
+    margin-bottom: 2rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .option-btn {
+        padding: 0.9rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .back-home {
+        top: 15px;
+        left: 15px;
+    }
+}
