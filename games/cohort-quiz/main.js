@@ -235,3 +235,5 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.code === 'ArrowRight' || e.code === 'Enter') nextSlide();
 });
+
+initGame();
